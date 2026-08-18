@@ -1,0 +1,124 @@
+/* Logo - 3 Lines Custom Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.logo-img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    transition: border-color 0.3s;
+}
+
+/* Logo hover effect - yellow border */
+.logo:hover .logo-img {
+    border-color: var(--yellow);
+}
+
+.logo-text-3lines {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-text-3lines span {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+/* Donate Button in Header */
+.btn-donate-header {
+    background: var(--red);
+    color: var(--white);
+    padding: 11px 26px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(255, 99, 71, 0.3);
+    transition: all 0.3s;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-donate-header:hover {
+    background: #E5533D;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 99, 71, 0.4);
+    color: var(--white);
+}
+
+/* Header wrapper - adjust layout */
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    gap: 20px;
+}
+
+/* Desktop Nav - fit nicely in one line */
+.nav-desktop {
+    display: none;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.nav-desktop a {
+    font-weight: 500;
+    color: var(--dark);
+    transition: color 0.3s;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.nav-desktop a:hover {
+    color: var(--orange);
+}
+
+/* Contact section - 2 column layout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contact-item a {
+    color: var(--orange);
+    font-weight: 600;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-desktop {
+        display: flex;
+    }
+
+    .logo-text-3lines span {
+        font-size: 16px;
+    }
+
+    .logo-img {
+        width: 58px;
+        height: 58px;
+    }
+}

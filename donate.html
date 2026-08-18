@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate â€“ Dogs Protection Trust Mysore</title>
+    <meta name="description"
+        content="Donate to Dogs Protection Trust - Support our rescue shelter in Mysore. One-time and recurring donations help feed, medicate, and provide shelter for abandoned street dogs.">
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords"
+        content="donate, dog rescue, Mysore, animal welfare, street dogs, UPI payment, shelter donations">
+    <meta name="author" content="Dogs Protection Trust">
+    <link rel="canonical" href="https://dptrust.example.com/donate">
+    <meta property="og:title" content="Donate â€“ Dogs Protection Trust">
+    <meta property="og:description"
+        content="Donate to Dogs Protection Trust - Support our rescue shelter in Mysore">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dptrust.example.com/donate">
+    <meta property="og:image" content="https://dptrust.example.com/images/logo.png">
+    <meta property="og:locale" content="en_IN">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Donate â€“ Dogs Protection Trust">
+    <meta name="twitter:description"
+        content="Donate to Dogs Protection Trust - Support our rescue shelter in Mysore">
+    <meta name="twitter:image" content="https://dptrust.example.com/images/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets & Favicon -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/logo-custom.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.png">
+
+    <style>
+        /* Page Specific Validation Styles */
+        .form-input.error {
+            border-color: #ff6347;
+            background-color: #fff0f0;
+        }
+
+        .error-text {
+            color: #ff6347;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip Link -->
+    <a href="#donationForm" class="skip-link">Skip to donation form</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <!-- Logo -->
+                <div class="logo" onclick="window.location.href='index.html'">
+                    <img src="images/logo.png" alt="DPT Logo" class="logo-img">
+                    <div class="logo-text-3lines">
+                        <span>Dogs</span>
+                        <span>Protection</span>
+                        <span>Trust</span>
+                    </div>
+                </div>
+
+                <!-- Donate Button -->
+                <a href="donate.html" class="btn-donate-header">Donate Now</a>
+
+                <!-- Desktop Nav -->
+                <nav class="nav-desktop">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#services">What We Do</a>
+                    <a href="gallery-listing.html">Gallery</a>
+                    <a href="blog-listing.html">Blogs</a>
+                    <a href="index.html#volunteer">Volunteer</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="nav-mobile" id="mobileNav">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#services">What We Do</a>
+            <a href="gallery-listing.html">Gallery</a>
+            <a href="blog-listing.html">Blogs</a>
+            <a href="index.html#volunteer">Volunteer</a>
+            <a href="donate.html" class="active">Donate Now</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Split Layout Container -->
+    <div class="split-layout-wrapper">
+        <div class="container mobile-container">
+            <div class="split-layout">
+
+                <!-- LEFT PANEL: Donator Details -->
+                <div class="donate-left-panel">
+                    <div class="panel-header">
+                        <h1>Make a Life-Saving Difference</h1>
+                        <p>100% of your donation directly provides food, emergency surgeries, and shelter for street dogs in Mysore.</p>
+                    </div>
+
+                    <form id="donationForm">
+                        <!-- Amount Selection -->
+                        <div class="form-section">
+                            <label class="section-label">1. Choose Donation Amount</label>
+                            <div class="amount-presets">
+                                <button type="button" class="amount-btn" data-amount="500">â‚¹500</button>
+                                <button type="button" class="amount-btn selected" data-amount="1000">â‚¹1,000</button>
+                                <button type="button" class="amount-btn" data-amount="2500">â‚¹2,500</button>
+                                <div class="custom-amount-wrapper">
+                                    <span>â‚¹</span>
+                                    <input type="number" id="customAmount" placeholder="Custom" min="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Anonymous Toggle -->
+                        <div class="form-group checkbox-group"
+                            style="margin: 20px 0; display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="anonymousDonation"
+                                style="width: 18px; height: 18px; cursor: pointer;">
+                            <label for="anonymousDonation" style="margin: 0; font-weight: 500; cursor: pointer;">Make
+                                this an anonymous donation</label>
+                        </div>
+
+                        <!-- Personal Details (Collapsible) -->
+                        <div id="personalInfoFields">
+                            <div class="form-group">
+                                <label for="donorName">Name *</label>
+                                <input type="text" id="donorName" class="form-input" placeholder="Enter your full name"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donorPhone">Phone Number (for WhatsApp Confirmation) *</label>
+                                <input type="tel" id="donorPhone" class="form-input" placeholder="+91 98765 43210"
+                                    required>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons" style="margin-top: 25px;">
+                            <!-- 1. Pay with UPI -->
+                            <a href="upi://pay?pa=9108021554@sbi&pn=Dogs%20Protection%20Trust&am=1000&cu=INR" id="payUpiBtn" class="btn btn-primary btn-block btn-lg"
+                                style="background: #ff6d00; border-color: #ff6d00; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; text-decoration: none;"
+                                aria-label="Pay with UPI app">Pay with UPI App <span class="amount-tag"
+                                    style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; margin-left: 10px; font-size: 0.9em;">â‚¹1000</span>
+                            </a>
+
+                            <!-- 2. Notify via WhatsApp -->
+                            <button type="submit" class="btn btn-secondary btn-block btn-lg" id="notifyBtn">
+                                I have made the payment
+                                <small style="display: block; font-size: 12px; font-weight: normal; opacity: 0.85;">(Send Confirmation via WhatsApp)</small>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- RIGHT PANEL: Payment Methods -->
+                <div class="donate-right-panel">
+                    <div class="payment-methods-card">
+                        <h2 class="panel-title">2. Scan & Pay Options</h2>
+
+                        <!-- QR Code Section -->
+                        <div class="pay-section qr-section">
+                            <div class="qr-box">
+                                <img src="images/upi-qr.png" alt="SBI Merchant UPI QR Code - DOGS PROTECTION TRUST" class="qr-code">
+                            </div>
+                            <div class="upi-text">
+                                <p><strong>Merchant: DOGS PROTECTION TRUST</strong></p>
+                                <p style="font-size: 13px; color: var(--gray); margin-bottom: 8px;">Scan with GPay, PhonePe, Paytm or Any UPI App</p>
+                                <div class="upi-copy-row">
+                                    <span>9108021554@sbi</span>
+                                    <button type="button" class="btn-copy-small" onclick="navigator.clipboard.writeText('9108021554@sbi'); alert('UPI ID copied: 9108021554@sbi');" aria-label="Copy UPI ID">Copy</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="divider-text">OR DIRECT BANK TRANSFER (NEFT / IMPS)</div>
+
+                        <!-- Bank Details -->
+                        <div class="pay-section bank-section">
+                            <div class="bank-details-visible">
+                                <h4 style="margin-bottom: 8px; color: var(--dark);">State Bank of India</h4>
+                                <p style="font-size: 13px; color: var(--gray); margin-bottom: 12px;">Ramkrishna Nagar branch, Mysuru</p>
+
+                                <div class="detail-row"
+                                    style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; background: #fff; padding: 8px 12px; border-radius: 6px; border: 1px solid #eee;">
+                                    <span style="font-size: 13px; color: var(--gray);">Name: <strong
+                                            style="color: var(--dark);">Dogs Protection Trust, Mysuru</strong></span>
+                                    <button class="btn-icon-copy" onclick="navigator.clipboard.writeText('Dogs Protection Trust, Mysuru'); alert('Name copied!');"
+                                        title="Copy Account Name"
+                                        style="background: none; border: none; cursor: pointer; font-size: 16px;">ðŸ“‹</button>
+                                </div>
+
+                                <div class="detail-row"
+                                    style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; background: #fff; padding: 8px 12px; border-radius: 6px; border: 1px solid #eee;">
+                                    <span style="font-size: 13px; color: var(--gray);">Acc No: <strong
+                                            style="color: var(--dark);">4046 2867 297</strong></span>
+                                    <button class="btn-icon-copy" onclick="navigator.clipboard.writeText('40462867297'); alert('Account Number copied: 40462867297');"
+                                        title="Copy Account No"
+                                        style="background: none; border: none; cursor: pointer; font-size: 16px;">ðŸ“‹</button>
+                                </div>
+
+                                <div class="detail-row"
+                                    style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; background: #fff; padding: 8px 12px; border-radius: 6px; border: 1px solid #eee;">
+                                    <span style="font-size: 13px; color: var(--gray);">IFSC: <strong
+                                            style="color: var(--dark);">SBIN0013231</strong></span>
+                                    <button class="btn-icon-copy" onclick="navigator.clipboard.writeText('SBIN0013231'); alert('IFSC Code copied: SBIN0013231');"
+                                        title="Copy IFSC"
+                                        style="background: none; border: none; cursor: pointer; font-size: 16px;">ðŸ“‹</button>
+                                </div>
+
+                                <div class="detail-row"
+                                    style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; background: #fff; padding: 8px 12px; border-radius: 6px; border: 1px solid #eee;">
+                                    <span style="font-size: 13px; color: var(--gray);">GPay / Phone: <strong
+                                            style="color: var(--dark);">9108021554</strong></span>
+                                    <button class="btn-icon-copy" onclick="navigator.clipboard.writeText('9108021554'); alert('Phone/GPay copied: 9108021554');"
+                                        title="Copy Phone/GPay"
+                                        style="background: none; border: none; cursor: pointer; font-size: 16px;">ðŸ“‹</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Column 1: Organization & Mission -->
+                <div class="footer-col footer-brand">
+                    <a href="#home" class="footer-logo" title="Dogs Protection Trust">
+                        <img src="images/logo.png" alt="DPT Logo" class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span class="title">Dogs Protection Trust</span>
+                            <span class="subtitle">Rescue â€¢ Shelter â€¢ Mysore</span>
+                        </div>
+                    </a>
+                    <p class="footer-tagline">ðŸ¾ Rescue â€¢ Heal â€¢ Protect</p>
+                    <p class="footer-desc">
+                        A dedicated grassroots dog rescue shelter in Mysore, Karnataka. We rescue, feed, treat, and provide lifetime shelter to abandoned, injured, and vulnerable street dogs.
+                    </p>
+                    <div class="footer-badge-pill">
+                        <span>â¤ï¸</span> 100% Volunteer & Donation Supported
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Our Shelter</a></li>
+                        <li><a href="#services">What We Do</a></li>
+                        <li><a href="gallery-listing.html">Rescued Dogs Gallery</a></li>
+                        <li><a href="blog-listing.html">Stories & Updates</a></li>
+                        <li><a href="#volunteer">Volunteer With Us</a></li>
+                        <li><a href="donate.html" class="btn-donate-link">Donate Now â†’</a></li>
+                        <li><a href="#contact">Contact & Visit</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact & Emergency -->
+                <div class="footer-col">
+                    <h4>Emergency & Contact</h4>
+                    <div class="footer-contact-list">
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">ðŸ“ž</div>
+                            <div class="footer-contact-info">
+                                <span class="label">Rescue Helpline</span>
+                                <a href="tel:+919901035607">+91-9901035607</a>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">ðŸ’¬</div>
+                            <div class="footer-contact-info">
+                                <span class="label">WhatsApp & GPay</span>
+                                <a href="https://wa.me/919108021554" target="_blank" rel="noopener">+91-9108021554</a>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">âœ‰ï¸</div>
+                            <div class="footer-contact-info">
+                                <span class="label">Official Email</span>
+                                <a href="mailto:dogsprotectionmysuru2021@gmail.com?cc=manpreeth007@gmail.com">dogsprotectionmysuru2021@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">ðŸ“</div>
+                            <div class="footer-contact-info">
+                                <span class="label">Location</span>
+                                <a href="https://maps.app.goo.gl/y9J8gt5qw1omZDCy7" target="_blank" rel="noopener">Mysore, Karnataka (Open Maps â†—)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4: Connect & Support -->
+                <div class="footer-col">
+                    <h4>Connect & Support</h4>
+                    <div class="footer-social-wrapper">
+                        <div class="social-buttons-grid">
+                            <a href="https://instagram.com/dogs_protection_trust_mysuru" target="_blank" rel="noopener" class="social-badge-btn instagram" title="Follow on Instagram">
+                                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://www.facebook.com/groups/1872556652757813/" target="_blank" rel="noopener" class="social-badge-btn facebook" title="Join Facebook Group">
+                                <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.7 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/></svg>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.amazon.in/hz/wishlist/ls/2IZFAVJARRJOT?ref_=wl_share" target="_blank" rel="noopener" class="social-badge-btn amazon" title="Amazon Wishlist">
+                                <svg viewBox="0 0 24 24"><path d="M13.958 10.09c0 1.25-.03 2.14-.62 3.03-.68 1.01-1.73 1.54-2.88 1.54-1.55 0-2.52-1.07-2.52-2.79 0-3.14 2.4-4.22 5.56-4.22.18 0 .34 0 .46.02v2.42zm4.18 8.44c-.26.22-.64.24-.92.08-1.28-.97-1.51-1.42-2.22-2.45-2.14 2.21-3.66 2.8-6.38 2.8-3.21 0-5.61-1.92-5.61-5.6 0-2.88 1.56-5.06 3.89-6.09 2.01-.89 4.88-1.05 7.05-1.3v-.53c0-.92-.16-2.02-.91-2.65-.68-.58-1.7-.8-2.67-.8-1.8 0-3.39.75-3.86 2.37-.09.34-.33.56-.67.57l-3.23-.33c-.34-.05-.59-.36-.49-.78C3.12 2.39 6.27.79 9.87.79c2.22 0 4.29.62 5.64 2.12 1.48 1.62 1.34 3.79 1.34 5.99v4.54c0 1.37.58 1.97 1.13 2.71.21.28.25.64.08.93l-2.92 1.45zm-1.73 1.31c.2.14.3.4.15.58C14.7 22.8 11.23 24 6.7 24c-4.4 0-7.85-1.56-8.2-1.8-.18-.12-.2-.38-.03-.52.28-.23.6-.5.91-.77.16-.14.4-.11.58.04 1.4 1.17 3.86 1.87 6.74 1.87 3.93 0 7.02-1.29 8.24-2.12.2-.14.45-.1.59.14l.87 1zm2.34-.84c-.21.27-.47.46-.73.4-.23-.05-.4-.25-.33-.52.26-.95.84-3.11-.42-4.71-.23-.29-.19-.6.1-.78.29-.18.67-.09.9.2 1.63 2.08.88 4.88.48 5.61z"/></svg>
+                                <span>Wishlist</span>
+                            </a>
+                            <a href="https://wa.me/919108021554?text=Hi%20DPT%20Team%2C%20I%20would%20like%20to%20help" target="_blank" rel="noopener" class="social-badge-btn whatsapp" title="WhatsApp Chat">
+                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="https://maps.app.goo.gl/y9J8gt5qw1omZDCy7" target="_blank" rel="noopener" class="social-badge-btn maps" title="Open Google Maps">
+                                <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.402-8 7.602 0 4.884 7.031 15.421 7.33 15.865.176.262.47.419.784.419s.608-.157.784-.419c.299-.444 7.33-10.981 7.33-15.865 0-4.2-3.802-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+                                <span>Directions</span>
+                            </a>
+                        </div>
+
+                        <!-- Direct UPI Box -->
+                        <div class="footer-support-card">
+                            <p><strong>Quick UPI Donation:</strong> Every â‚¹100 feeds a rescued dog for a day.</p>
+                            <div class="footer-upi-copy">
+                                <span>9108021554@sbi</span>
+                                <button onclick="copyUPI()" aria-label="Copy UPI ID">Copy UPI</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom: Guaranteed Single Line -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-main">
+                    <span>&copy; <span id="currentYear">2026</span> Dogs Protection Trust. All rights reserved.</span>
+                    <span class="sep">â€¢</span>
+                    <span>Built with â¤ï¸ by <a href="https://wa.me/919108021554?text=Hi%20I%20would%20like%20to%20get%20my%20website%20designed" target="_blank" rel="noopener">Socialeo</a></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/donate.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        if (mobileMenuBtn && mobileNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+            });
+            const mobileLinks = mobileNav.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
