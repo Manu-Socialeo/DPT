@@ -236,12 +236,19 @@ const DEFAULT_GALLERY_PHOTOS = [
 ];
 
 // Load Gallery
-function loadGalleryMain(isHomePage = false) {
-    const photos = DEFAULT_GALLERY_PHOTOS;
+function loadGalleryMain(isHomePage = null) {
     const galleryGrid = document.getElementById('galleryGridMain');
     if (!galleryGrid) return;
 
-    const numToShow = isHomePage ? 3 : photos.length;
+    const photos = DEFAULT_GALLERY_PHOTOS;
+
+    // Check if this grid is on the home page preview section or on the full listing page
+    let isHome = isHomePage;
+    if (isHome === null) {
+        isHome = galleryGrid.closest('.gallery-section') !== null || (!!document.querySelector('.hero') && !document.querySelector('.listing-hero'));
+    }
+
+    const numToShow = isHome ? 3 : photos.length;
     const displayPhotos = photos.slice(0, numToShow);
 
     galleryGrid.innerHTML = displayPhotos.map((photo, idx) => `
@@ -253,217 +260,147 @@ function loadGalleryMain(isHomePage = false) {
             </div>
         </div>
     `).join('');
-}
-// Blog Seeds - 10 Comprehensive Pillars of Shelter Care (What We Do)
+}// Blog Seeds - 12 Comprehensive Pillars of Shelter Care (What We Do)
 const DEFAULT_BLOGS = [
-    // 1. Rescue & Emergency Help (1)
     {
-        id: 'dtp_blog_1',
+        id: 'dpt_blog_rescue_helpline',
         category: '🚨 Rescue & Emergency Help',
-        title: '24/7 Rescue Helpline: How We Save Dogs in Distress Across Mysore and Nearby Villages',
+        title: '24/7 Emergency Rescue: The Definitive Protocol for Saving Distressed & Injured Street Dogs Across Mysore',
         date: '2024-03-18',
-        author: 'DPT Emergency Rescue Team',
-        excerpt: 'Inside our daily emergency missions responding to road accidents, severe trauma, and abandoned dogs across Mysore city and rural outskirts.',
-        image: 'images/hero-dog.jpg',
-        content: `
-            <p>Every single day in Mysore and its surrounding villages, vulnerable street dogs face severe emergencies—from high-speed highway hit-and-run accidents to territorial bite wounds and sudden abandonments. At Dogs Protection Trust, our emergency response helpline operates continuously to answer distress calls.</p>
-            <h3>Our Rapid Response Protocol</h3>
-            <p>When a rescue alert is received via WhatsApp or phone, our field protocol is executed promptly:</p>
-            <ul>
-                <li><strong>Safe Containment & Triage:</strong> Approaching scared or injured animals with specialized rescue blankets, gentle handling, and muzzles to prevent spinal shock or panic.</li>
-                <li><strong>Emergency Transport:</strong> Transporting injured dogs safely in our rescue vehicle equipped with stretchers, antiseptics, and trauma kits to partner veterinary clinics.</li>
-                <li><strong>Stabilization:</strong> Immediate IV fluid resuscitation, pain relief, anti-inflammatory support, and sterile splints for fractured limbs.</li>
-            </ul>
-            <p>Rescue is only the first critical step. Once stabilized, the canine enters our shelter to begin their journey of full healing and recovery.</p>
-        `
+        author: 'DPT Emergency Rescue Unit',
+        readTime: '14 min read',
+        image: 'images/blog-emergency-rescue.jpg',
+        pageUrl: 'blog-rescue-emergency-helpline.html',
+        excerpt: 'An exhaustive guide on 24/7 emergency street dog rescues in Mysore. Learn our field triage standards, road accident trauma care, gentle containment methods, and veterinary stabilization procedures.'
     },
-    // 2. Rescue & Emergency Help (2)
     {
-        id: 'dtp_blog_2',
+        id: 'dpt_blog_complex_extractions',
         category: '🚨 Rescue & Emergency Help',
-        title: 'Puppies in Pits to Trapped Canines: Behind the Scenes of Complex Animal Rescues',
+        title: 'Puppies in Pits to Trapped Canines: Behind the Scenes of Complex Animal Extractions',
         date: '2024-03-12',
-        author: 'Ashwini, Shelter Founder',
-        excerpt: 'How our volunteers navigate open drains, construction pits, and hazardous roads to save newborn puppies and trapped animals.',
-        image: 'images/about.jpg',
-        content: `
-            <p>Not all rescues occur on open roads. Many of our most challenging missions involve trapped animals—such as newborn litters washed into storm drains during Mysore monsoon rains, or frightened dogs fallen into deep construction trenches.</p>
-            <h3>Specialized Rescue Techniques</h3>
-            <p>Saving trapped animals requires patience, teamwork, and specialized techniques:</p>
-            <ol>
-                <li><strong>Drain & Pit Extractions:</strong> Using secure harnesses, ladders, and nets to carefully lift trapped dogs without causing neck strain or bone injury.</li>
-                <li><strong>Reuniting & Nursing Puppies:</strong> Ensuring mother dogs and their puppies are rescued together so newborn pups continue receiving vital maternal colostrum and warmth.</li>
-                <li><strong>Post-Extraction Health Check:</strong> Immediate screening for hypothermia, dehydration, tick-borne infections, and respiratory distress.</li>
-            </ol>
-            <p>Every distress call we answer is a life saved and a second chance given.</p>
-        `
+        author: 'Ashwini, Founder & Rescue Lead',
+        readTime: '13 min read',
+        image: 'images/blog-drain-extraction.jpg',
+        pageUrl: 'blog-complex-extractions-drains-wells.html',
+        excerpt: 'How DPT executes technical confined-space and high-angle animal rescues from deep stormwater drains, agricultural open wells, and construction foundation shafts across Mysore.'
     },
-    // 3. Medical Treatment (1)
     {
-        id: 'dtp_blog_3',
+        id: 'dpt_blog_vaccinations_guide',
         category: '💉 Medical Treatment',
-        title: 'Essential Medical Care: Vaccinations, Deworming & Preventing Deadly Viral Outbreaks',
+        title: 'Essential Medical Care: Vaccinations, Deworming & Disease Prevention in Street Dogs',
         date: '2024-03-05',
-        author: 'Dr. Aisha Sharma, Veterinarian',
-        excerpt: 'Why timely 7-in-1 multi-vaccinations and annual anti-rabies immunizations are crucial for protecting street dogs and our community.',
-        image: 'images/blog-1.jpg',
-        content: `
-            <p>Preventative veterinary medicine is the foundation of shelter care. In high-density street canine populations, deadly viruses like Canine Distemper and Parvovirus can spread rapidly if preventative immunizations are neglected.</p>
-            <h3>Our Clinical Vaccination & Deworming Protocol</h3>
-            <ul>
-                <li><strong>Anti-Rabies Vaccine (ARV):</strong> 100% of all resident shelter dogs and community packs receive annual ARV immunizations to maintain a safe, rabies-free Mysore.</li>
-                <li><strong>DHPPiL Multi-Vaccine (7-in-1):</strong> Essential protection against Parvovirus, Distemper, Infectious Hepatitis, Leptospirosis, and Parainfluenza.</li>
-                <li><strong>Quarterly Deworming & Tick Control:</strong> Regular broad-spectrum dewormers paired with spot-on anti-tick treatments to eliminate blood parasites and prevent anaemia.</li>
-            </ul>
-            <p>Vaccinating street dogs creates herd immunity, protecting both animals and citizens across the city.</p>
-        `
+        author: 'Dr. Aisha Sharma, Senior Veterinarian',
+        readTime: '14 min read',
+        image: 'images/blog-vaccination-guide.jpg',
+        pageUrl: 'blog-essential-vaccinations-guide.html',
+        excerpt: 'The definitive veterinary guide to street dog immunizations in India. Learn Anti-Rabies protocols, DHPPiL 7-in-1 multi-vaccines, deworming cycles, and cold-chain integrity.'
     },
-    // 4. Medical Treatment (2)
     {
-        id: 'dtp_blog_4',
+        id: 'dpt_blog_sterilization_wounds',
         category: '💉 Medical Treatment',
-        title: 'Sterilization & Emergency Surgeries: Humane Population Control and Wound Recovery',
+        title: 'Sterilization & Emergency Surgeries: Humane Population Control & Advanced Wound Recovery',
         date: '2024-02-28',
-        author: 'DPT Veterinary Care Desk',
-        excerpt: 'How humane Catch-Neuter-Vaccinate-Return (CNVR) and dedicated wound clinics eliminate suffering on Mysore streets.',
-        image: 'images/blog-2.jpg',
-        content: `
-            <p>Surgical sterilization combined with vaccination is the globally recognized humane standard for managing street dog populations and stopping the cycle of puppy homelessness and starvation.</p>
-            <h3>Surgical Protocols & Intensive Wound Care</h3>
-            <ul>
-                <li><strong>Safe Animal Birth Control (ABC):</strong> High-standard laparoscopic and sterile spay/neuter surgeries with complete post-operative antibiotics and analgesia.</li>
-                <li><strong>Maggot Wound & Laceration Management:</strong> Gentle manual extraction of maggots, deep tissue irrigation with sterile saline/iodine, and healing dressings.</li>
-                <li><strong>Orthopedic Fracture Management:</strong> Partnering with senior orthopedic surgeons for internal fixation, bone plating, and cast management for accident victims.</li>
-            </ul>
-            <p>Our goal is to ensure every patient heals cleanly without pain, restoring full mobility and zest for life.</p>
-        `
+        author: 'DPT Veterinary Surgical Desk',
+        readTime: '14 min read',
+        image: 'images/blog-wound-care.jpg',
+        pageUrl: 'blog-sterilization-maggot-wound-care.html',
+        excerpt: 'Clinical protocols on surgical Animal Birth Control (ABC/CNVR), treating advanced necrotic maggot infestations (myiasis), and eradicating severe mange in street dogs.'
     },
-    // 5. Shelter & Rehabilitation (1)
     {
-        id: 'dtp_blog_5',
+        id: 'dpt_blog_psychological_rehab',
         category: '🏥 Shelter & Rehabilitation',
-        title: 'From Fear to Joy: The Physical and Emotional Rehabilitation of Injured Dogs',
+        title: 'From Fear to Joy: The Step-by-Step Psychological Rehabilitation of Traumatized Dogs',
         date: '2024-02-20',
         author: 'DPT Rehabilitation Unit',
-        excerpt: 'Healing broken bones is only half the journey. Discover how gentle handling, pack support, and patience rebuild trust in traumatized dogs.',
-        image: 'images/blog-3.jpg',
-        content: `
-            <p>Dogs that have experienced human cruelty, stone pelting, or months of agonizing pain often arrive with deep emotional trauma. Rebuilding their trust requires patience, gentle hands, and a calm environment.</p>
-            <h3>Holistic Rehabilitation Steps</h3>
-            <ol>
-                <li><strong>Quiet Acclimatization Spaces:</strong> Providing cozy, low-stress recovery kennels where fearful dogs can observe their caregivers in safety.</li>
-                <li><strong>Daily Physiotherapy & Massage:</strong> Gentle limb passive range-of-motion exercises, hot fomentation, and assisted walking for dogs recovering from spinal or leg trauma.</li>
-                <li><strong>Pack Therapy:</strong> Introducing calm, friendly resident shelter dogs who naturally model confidence and teach newcomers that human touch brings warmth and meals.</li>
-            </ol>
-            <p>The transformation from a cowering, fearful dog to an affectionate tail-wagging companion is the heart of what we do.</p>
-        `
+        readTime: '13 min read',
+        image: 'images/blog-trauma-rehab.jpg',
+        pageUrl: 'blog-psychological-rehabilitation-trauma.html',
+        excerpt: 'How Dogs Protection Trust rehabilitates abused, fearful, and abandoned street dogs through our 4-phase decompression method, sensory enrichment, and pack therapy.'
     },
-    // 6. Shelter & Rehabilitation (2)
     {
-        id: 'dtp_blog_6',
+        id: 'dpt_blog_lifetime_sanctuary',
         category: '🏥 Shelter & Rehabilitation',
         title: 'A Safe Haven for Life: Dedicated Palliative Care for Disabled, Paralyzed and Senior Dogs',
-        date: '2024-02-14',
+        date: '2024-02-15',
         author: 'Ashwini, Shelter Founder',
-        excerpt: 'Why paralyzed dogs with spinal fractures and blind seniors find permanent dignity, wheelchairs, and lifetime love at DPT.',
-        image: 'images/hero-dog.jpg',
-        content: `
-            <p>For paralyzed canines, three-legged amputees, and blind senior dogs, survival on the streets is impossible. Many shelters turn away unadoptable dogs, but at Dogs Protection Trust, these special animals receive permanent sanctuary.</p>
-            <h3>Lifetime Dignity & Comfort</h3>
-            <ul>
-                <li><strong>Custom Wheelchair Carts:</strong> Equipping paralyzed dogs with lightweight custom wheeled carts so they can run and play with the pack every morning.</li>
-                <li><strong>Orthopedic Bedding:</strong> Thick foam mattresses washed daily to eliminate pressure sores and keep elderly dogs cozy in all seasons.</li>
-                <li><strong>Lifelong Palliative Care:</strong> Regular bladder expression, arthritis supplements, and constant affection until their natural last day.</li>
-            </ul>
-            <p>We believe every life has value. No dog is ever euthanized simply because they require extra daily care.</p>
-        `
+        readTime: '13 min read',
+        image: 'images/blog-wheelchair-sanctuary.jpg',
+        pageUrl: 'blog-lifetime-sanctuary-special-needs.html',
+        excerpt: 'Inside our permanent sanctuary for disabled, blind, paralyzed, and geriatric street dogs in Mysore. Custom wheelchairs, bladder management, and our non-euthanasia promise.'
     },
-    // 7. Daily Feeding & Care (1)
     {
-        id: 'dtp_blog_7',
+        id: 'dpt_blog_shelter_kitchen',
         category: '🥘 Daily Feeding & Care',
-        title: 'Nutritious Meals Every Day: How We Cook and Serve Balanced Food to 400+ Dogs',
+        title: 'Nutritious Meals Every Day: How We Cook and Serve 400+ Balanced Fresh Meals Daily',
+        date: '2024-02-10',
+        author: 'DPT Nutrition & Kitchen Staff',
+        readTime: '13 min read',
+        image: 'images/blog-shelter-kitchen.jpg',
+        pageUrl: 'blog-shelter-kitchen-daily-feeding.html',
+        excerpt: 'Behind the scenes of our 5:00 AM shelter kitchen in Mysore. Sourcing fresh chicken, cooking 400+ wholesome daily meals, street feeding routes, and balanced canine nutrition.'
+    },
+    {
+        id: 'dpt_blog_clinical_nutrition',
+        category: '🥘 Daily Feeding & Care',
+        title: 'Clinical Nutrition: Reversing Severe Starvation, Cachexia & Refeeding Syndrome',
         date: '2024-02-05',
-        author: 'DPT Kitchen Team',
-        excerpt: 'Take a tour of our shelter kitchen: Fresh rice, protein-rich boiled chicken, eggs, turmeric broth, and clean water served every single day.',
-        image: 'images/about.jpg',
-        content: `
-            <p>Feeding over 50 resident shelter dogs and hundreds of street dogs across our feeding routes requires extensive daily preparation, spotless food hygiene, and high-quality ingredients.</p>
-            <h3>What Goes Into Our Large Cooking Pots</h3>
-            <ul>
-                <li><strong>Fresh Cooked Rice & Broken Grains:</strong> Wholesome carbohydrates providing sustained daily energy.</li>
-                <li><strong>Fresh Boiled Chicken & Eggs:</strong> Rich protein sources critical for muscle repair, healing wounds, and nursing mothers.</li>
-                <li><strong>Turmeric & Veggie Puree:</strong> Natural anti-inflammatory agents to support immunity and digestive balance.</li>
-                <li><strong>Calcium & Bone Meal Supplements:</strong> Ensuring strong bones and joint longevity for growing pups and aging seniors.</li>
-            </ul>
-            <p>A simple contribution of ₹100 funds nutritious daily meals for a rescued dog in our care.</p>
-        `
+        author: 'DPT Clinical Nutrition Team',
+        readTime: '13 min read',
+        image: 'images/blog-nutrition-recovery.jpg',
+        pageUrl: 'blog-clinical-nutrition-malnourishment.html',
+        excerpt: 'The clinical veterinary science of refeeding starved, emaciated street dogs. How DPT prevents refeeding syndrome, restores organ function, and rebuilds muscle mass.'
     },
-    // 8. Daily Feeding & Care (2)
     {
-        id: 'dtp_blog_8',
-        category: '🥘 Daily Feeding & Care',
-        title: 'Healing Through Nutrition: Specialized Diets for Starved and Sick Street Rescues',
-        date: '2024-01-28',
-        author: 'DPT Nutrition Desk',
-        excerpt: 'How clinical nutritional therapy reverses emaciation, restores organ function, and speeds recovery in critically ill patients.',
-        image: 'images/blog-1.jpg',
-        content: `
-            <p>Severely starved dogs cannot digest heavy meals immediately. Their fragile digestive tracts require scientifically managed, easily digestible refeeding protocols to avoid dangerous metabolic complications.</p>
-            <h3>Clinical Feeding Strategies</h3>
-            <ul>
-                <li><strong>Frequent Micro-Portions:</strong> Offering 4 to 6 small, warm portions of broth and soft chicken throughout the day.</li>
-                <li><strong>Oral Rehydration & Electrolytes:</strong> Filtered water infused with electrolytes and probiotics to restore cellular hydration.</li>
-                <li><strong>Puppy Growth Nutrition:</strong> High-calorie starter mousse and calcium-rich diets to overcome early developmental malnutrition.</li>
-            </ul>
-            <p>Watching sunken ribs fill out and dull coats turn glossy is proof that good food is the ultimate medicine.</p>
-        `
-    },
-    // 9. Adoption Counselling (1)
-    {
-        id: 'dtp_blog_9',
+        id: 'dpt_blog_indie_adoption',
         category: '❤️ Adoption Counselling',
-        title: 'Adoption Counselling: Matching Rescued Indie Dogs with Loving Forever Families',
-        date: '2024-01-20',
-        author: 'DPT Adoption Desk',
-        excerpt: 'Why native Indian Indie (Desi) dogs are the smartest, sturdiest, and most loyal pets, and how our adoption matching process works.',
-        image: 'images/blog-2.jpg',
-        content: `
-            <p>Native Indian street dogs (Indies) have adapted over millennia to our climate. They possess strong natural immunity, low grooming needs, high intelligence, and immense emotional devotion to their human families.</p>
-            <h3>Our Responsible Adoption Process</h3>
-            <ol>
-                <li><strong>Matching Lifestyle & Temperament:</strong> Helping families choose a dog whose energy level and personality match their household.</li>
-                <li><strong>Health & Vaccination Handover:</strong> Every dog adopted from DPT is fully vaccinated, dewormed, and sterilized (if age-appropriate).</li>
-                <li><strong>Post-Adoption Guidance:</strong> Offering continuous dietary and behavioral advice to ensure a smooth transition into family life.</li>
-            </ol>
-            <p>When you adopt a rescue dog, you transform a life and make room for another street animal in need.</p>
-        `
+        title: 'Adopt, Don\'t Shop: Why Rescued Indie (Desi) Dogs Make the Best Family Companions',
+        date: '2024-01-28',
+        author: 'DPT Adoption Counselling Desk',
+        readTime: '14 min read',
+        image: 'images/blog-indie-adoption.jpg',
+        pageUrl: 'blog-indie-dog-adoption-guide.html',
+        excerpt: 'The definitive guide to adopting an Indian Native (Indie/Desi) dog in Mysore. Learn the 3-3-3 adoption transition rule, natural climate immunity, and zero grooming benefits.'
     },
-    // 10. Community Awareness (1)
     {
-        id: 'dtp_blog_10',
+        id: 'dpt_blog_community_laws',
         category: '📢 Community Awareness',
-        title: 'Building a Compassionate Mysore: Community Awareness and Volunteer Power at DPT',
-        date: '2024-01-12',
-        author: 'DPT Community Team',
-        excerpt: 'From school education drives to neighborhood feeder networks, discover how community awareness is creating a safer Mysore for all.',
-        image: 'images/blog-3.jpg',
-        content: `
-            <p>A sustainable animal welfare movement requires strong community participation. Educating neighborhood residents on street dog behavior, rabies prevention, and compassionate co-existence prevents cruelty and creates harmonious communities.</p>
-            <h3>How You Can Drive Change in Mysore</h3>
-            <ul>
-                <li><strong>Become a Neighborhood Feeder & Guardian:</strong> Help monitor community dogs for injuries or breeding, alerting DPT for timely care.</li>
-                <li><strong>Volunteer on Weekends:</strong> Spend a rewarding morning at our shelter helping with dog bathing, grooming, and walking.</li>
-                <li><strong>Support via UPI & Wishlist:</strong> Make direct contributions to <code>9108021554@sbi</code> or send dog food via our Amazon Wishlist.</li>
-                <li><strong>Advocate for Compassion:</strong> Educate children and neighbors that street dogs are sentient community friends who protect neighborhoods.</li>
-            </ul>
-            <p>Together, hand in hand, we are creating a kinder, rabies-free Mysore where every dog lives in safety.</p>
-        `
+        title: 'Building a Rabies-Free Mysore: Community Awareness, Feeder Rights & Animal Welfare Laws',
+        date: '2024-01-20',
+        author: 'DPT Legal & Community Outreach Desk',
+        readTime: '14 min read',
+        image: 'images/blog-community-rights.jpg',
+        pageUrl: 'blog-community-awareness-legal-rights.html',
+        excerpt: 'The definitive legal and community guide to animal welfare in India. Learn the Prevention of Cruelty to Animals Act, AWBI feeding guidelines, and feeder rights.'
+    },
+    {
+        id: 'dpt_blog_max_story',
+        category: '🏆 Rescue Success Stories',
+        title: 'Success Story: Max\'s Complete 6-Month Orthopedic & Emotional Rehabilitation',
+        date: '2024-01-15',
+        author: 'Ashwini, Shelter Founder',
+        readTime: '13 min read',
+        image: 'images/blog-max-story.jpg',
+        pageUrl: 'blog-success-story-max-recovery.html',
+        excerpt: 'The inspiring true story of Max, an abandoned senior Indie dog who overcame compound femur fractures and severe trauma to become DPT\'s welcoming shelter ambassador.'
+    },
+    {
+        id: 'dpt_blog_parvovirus_guide',
+        category: '💉 Medical Treatment',
+        title: 'Understanding Canine Parvovirus: Emergency Clinical Protocols, Warning Signs & Treatment',
+        date: '2024-01-10',
+        author: 'Dr. Aisha Sharma, Senior Veterinarian',
+        readTime: '14 min read',
+        image: 'images/blog-parvo-icu.jpg',
+        pageUrl: 'blog-understanding-canine-parvovirus.html',
+        excerpt: 'An exhaustive veterinary emergency guide on Canine Parvovirus (CPV-2). Learn early clinical symptoms, strict quarantine protocols, and IV fluid resuscitation.'
     }
 ];
 
 // Load Blog Posts
-function loadBlogMain(isHomePage = false) {
+function loadBlogMain(isHomePage = null) {
+    const blogGrid = document.getElementById('blogGridMain');
+    if (!blogGrid) return;
+
     let blogs = [];
     if (typeof window !== 'undefined' && window.DPT_ALL_BLOGS && window.DPT_ALL_BLOGS.length > 0) {
         blogs = window.DPT_ALL_BLOGS;
@@ -471,10 +408,13 @@ function loadBlogMain(isHomePage = false) {
         blogs = DEFAULT_BLOGS;
     }
 
-    const blogGrid = document.getElementById('blogGridMain');
-    if (!blogGrid) return;
+    // Check if this grid is on the home page preview section or on the full listing page
+    let isHome = isHomePage;
+    if (isHome === null) {
+        isHome = blogGrid.closest('.blog-section') !== null || (!!document.querySelector('.hero') && !document.querySelector('.listing-hero'));
+    }
 
-    const numToShow = isHomePage ? 3 : blogs.length;
+    const numToShow = isHome ? 3 : blogs.length;
     const displayBlogs = blogs.slice(0, numToShow);
 
     blogGrid.innerHTML = displayBlogs.map(blog => `
@@ -576,10 +516,6 @@ if (headerElement) {
 
 // Auto-run on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if this is the homepage or a dedicated listing page
-    const isGalleryListingPage = window.location.pathname.includes('gallery-listing.html');
-    const isBlogListingPage = window.location.pathname.includes('blog-listing.html');
-
-    loadGalleryMain(!isGalleryListingPage);
-    loadBlogMain(!isBlogListingPage);
+    loadGalleryMain();
+    loadBlogMain();
 });
