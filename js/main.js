@@ -162,6 +162,36 @@ if (currentYearElement) {
 // Gallery Seeds
 const DEFAULT_GALLERY_PHOTOS = [
     {
+        id: 'photo_ashwini_hero',
+        image: 'images/gallery-ashwini-wheelchair-rescue.jpg',
+        caption: 'Founder Ashwini with Sanctuary Hero',
+        description: 'Shelter founder Ashwini with our special-needs rescue dog thriving on custom mobility wheels.'
+    },
+    {
+        id: 'photo_golden_pup',
+        image: 'images/gallery-rescued-golden-puppy.jpg',
+        caption: 'Rescued Golden Indie Pup',
+        description: 'Safe in loving arms, receiving nutrition, warmth, and care at our puppy nursery.'
+    },
+    {
+        id: 'photo_white_pup',
+        image: 'images/gallery-white-eared-pup.jpg',
+        caption: 'Playful Big-Eared Indie',
+        description: 'Curious, spirited, and recovering happily after gentle roadside rescue in Mysore.'
+    },
+    {
+        id: 'photo_tan_indie',
+        image: 'images/gallery-sanctuary-tan-indie.jpg',
+        caption: 'Gentle Sanctuary Resident',
+        description: 'Resting peacefully on the shelter veranda after orthopedic rehabilitation.'
+    },
+    {
+        id: 'photo_tri_color',
+        image: 'images/gallery-tri-color-rescue.jpg',
+        caption: 'Alert & Loving Companion',
+        description: 'Fully vaccinated, healthy, and enjoying safe shelter life at Dogs Protection Trust.'
+    },
+    {
         id: 'photo_1',
         image: 'images/hero-dog.jpg',
         caption: 'Hero – Safe & Happy',

@@ -5,6 +5,31 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 GALLERY_PHOTOS = [
     {
+        "image": "images/gallery-ashwini-wheelchair-rescue.jpg",
+        "caption": "Founder Ashwini with Sanctuary Hero",
+        "description": "Shelter founder Ashwini with our special-needs rescue dog thriving on custom mobility wheels."
+    },
+    {
+        "image": "images/gallery-rescued-golden-puppy.jpg",
+        "caption": "Rescued Golden Indie Pup",
+        "description": "Safe in loving arms, receiving nutrition, warmth, and care at our puppy nursery."
+    },
+    {
+        "image": "images/gallery-white-eared-pup.jpg",
+        "caption": "Playful Big-Eared Indie",
+        "description": "Curious, spirited, and recovering happily after gentle roadside rescue in Mysore."
+    },
+    {
+        "image": "images/gallery-sanctuary-tan-indie.jpg",
+        "caption": "Gentle Sanctuary Resident",
+        "description": "Resting peacefully on the shelter veranda after orthopedic rehabilitation."
+    },
+    {
+        "image": "images/gallery-tri-color-rescue.jpg",
+        "caption": "Alert & Loving Companion",
+        "description": "Fully vaccinated, healthy, and enjoying safe shelter life at Dogs Protection Trust."
+    },
+    {
         "image": "images/hero-dog.jpg",
         "caption": "Hero – Safe & Happy",
         "description": "Rescued from heavy traffic near Mysore ring road. Now energetic and loving life at DPT."
@@ -85,8 +110,8 @@ def generate_gallery_html(photos_subset):
 with open('gallery-listing.html', 'r', encoding='utf-8') as fp:
     content = fp.read()
 
-all_12_gallery_html = generate_gallery_html(GALLERY_PHOTOS)
-new_gallery_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{all_12_gallery_html}\n            </div>'
+all_gallery_html = generate_gallery_html(GALLERY_PHOTOS)
+new_gallery_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{all_gallery_html}\n            </div>'
 
 content = re.sub(
     r'<div class="gallery-grid-main" id="galleryGridMain">.*?</div>',
@@ -97,14 +122,14 @@ content = re.sub(
 
 with open('gallery-listing.html', 'w', encoding='utf-8') as fp:
     fp.write(content)
-print("Updated gallery-listing.html with 12 static gallery items.")
+print(f"Updated gallery-listing.html with {len(GALLERY_PHOTOS)} static gallery items.")
 
-# 2. Update index.html with 3 gallery items
+# 2. Update index.html with top preview gallery items (showing top 3 or 4 new photos)
 with open('index.html', 'r', encoding='utf-8') as fp:
     content = fp.read()
 
-top_3_gallery_html = generate_gallery_html(GALLERY_PHOTOS[:3])
-new_index_gallery_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{top_3_gallery_html}\n            </div>'
+top_gallery_html = generate_gallery_html(GALLERY_PHOTOS[:3])
+new_index_gallery_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{top_gallery_html}\n            </div>'
 
 content = re.sub(
     r'<div class="gallery-grid-main" id="galleryGridMain">.*?</div>',
@@ -115,4 +140,4 @@ content = re.sub(
 
 with open('index.html', 'w', encoding='utf-8') as fp:
     fp.write(content)
-print("Updated index.html with 3 static preview gallery items.")
+print(f"Updated index.html with top preview gallery items.")
