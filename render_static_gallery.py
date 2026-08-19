@@ -106,38 +106,39 @@ def generate_gallery_html(photos_subset):
         items.append(item)
     return "\n".join(items)
 
-# 1. Update gallery-listing.html
+# 1. Clean and update gallery-listing.html
 with open('gallery-listing.html', 'r', encoding='utf-8') as fp:
     content = fp.read()
 
 all_gallery_html = generate_gallery_html(GALLERY_PHOTOS)
-new_gallery_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{all_gallery_html}\n            </div>'
+new_listing_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{all_gallery_html}\n            </div>\n\n            <!-- CTA Banner -->'
 
 content = re.sub(
-    r'<div class="gallery-grid-main" id="galleryGridMain">.*?</div>',
-    new_gallery_grid,
+    r'<div class="gallery-grid-main" id="galleryGridMain">.*?<!-- CTA Banner -->',
+    new_listing_grid,
     content,
     flags=re.DOTALL
 )
 
 with open('gallery-listing.html', 'w', encoding='utf-8') as fp:
     fp.write(content)
-print(f"Updated gallery-listing.html with {len(GALLERY_PHOTOS)} static gallery items.")
+print(f"Cleaned and updated gallery-listing.html with {len(GALLERY_PHOTOS)} gallery items.")
 
-# 2. Update index.html with top preview gallery items (showing top 3 or 4 new photos)
+# 2. Clean and update index.html
 with open('index.html', 'r', encoding='utf-8') as fp:
-    content = fp.read()
+    content_index = fp.read()
 
-top_gallery_html = generate_gallery_html(GALLERY_PHOTOS[:3])
-new_index_gallery_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{top_gallery_html}\n            </div>'
+# On homepage, show top 4 rescue photos in a balanced 4-column row
+top_4_gallery_html = generate_gallery_html(GALLERY_PHOTOS[:4])
+new_index_gallery_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{top_4_gallery_html}\n            </div>\n        </div>\n    </section>'
 
-content = re.sub(
-    r'<div class="gallery-grid-main" id="galleryGridMain">.*?</div>',
+content_index = re.sub(
+    r'<div class="gallery-grid-main" id="galleryGridMain">.*?</section>',
     new_index_gallery_grid,
-    content,
+    content_index,
     flags=re.DOTALL
 )
 
 with open('index.html', 'w', encoding='utf-8') as fp:
-    fp.write(content)
-print(f"Updated index.html with top preview gallery items.")
+    fp.write(content_index)
+print("Cleaned and updated index.html with top 4 preview gallery items.")
