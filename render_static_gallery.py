@@ -128,9 +128,9 @@ print(f"Cleaned and updated gallery-listing.html with {len(GALLERY_PHOTOS)} gall
 with open('index.html', 'r', encoding='utf-8') as fp:
     content_index = fp.read()
 
-# On homepage, show top 4 rescue photos in a balanced 4-column row
-top_4_gallery_html = generate_gallery_html(GALLERY_PHOTOS[:4])
-new_index_gallery_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{top_4_gallery_html}\n            </div>\n        </div>\n    </section>'
+# On homepage, show all 5 new rescue photos in the preview gallery
+top_5_gallery_html = generate_gallery_html(GALLERY_PHOTOS[:5])
+new_index_gallery_grid = f'<div class="gallery-grid-main" id="galleryGridMain">\n{top_5_gallery_html}\n            </div>\n        </div>\n    </section>'
 
 content_index = re.sub(
     r'<div class="gallery-grid-main" id="galleryGridMain">.*?</section>',
@@ -141,4 +141,4 @@ content_index = re.sub(
 
 with open('index.html', 'w', encoding='utf-8') as fp:
     fp.write(content_index)
-print("Cleaned and updated index.html with top 4 preview gallery items.")
+print("Cleaned and updated index.html with all 5 new preview gallery items.")
